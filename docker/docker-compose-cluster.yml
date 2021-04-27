@@ -1,0 +1,48 @@
+networks:
+  roachnet: {}
+
+services:
+  roach1:
+    image: cockroachdb/cockroach:v20.2.8
+    command: start --insecure --advertise-addr=roach1 --join=roach1,roach2,roach3
+    healthcheck:
+      interval: 10s
+      retries: 5
+      timeout: 5s
+      test: ["CMD", "/cockroach/cockroach", "node", "status", "--insecure"]
+    networks:
+      roachnet:
+    ports:
+    - published: 8080
+      target: 8080
+    - published: 26257
+      target: 26257
+    volumes:
+      - roach1_data:/cockroach/cockroach-data
+
+  roach2:
+    image: cockroachdb/cockroach:v20.2.8
+    command: start --insecure --advertise-addr=roach2 --join=roach1,roach2,roach3
+    depends_on:
+      roach1:
+        condition: service_started
+    networks:
+      roachnet:
+    volumes:
+      - roach2_data:/cockroach/cockroach-data
+
+  roach3:
+    image: cockroachdb/cockroach:v20.2.8
+    command: start --insecure --advertise-addr=roach3 --join=roach1,roach2,roach3
+    depends_on:
+      roach1:
+        condition: service_started
+    networks:
+      roachnet:
+    volumes:
+      - roach3_data:/cockroach/cockroach-data
+
+volumes:
+  roach1_data: {}
+  roach2_data: {}
+  roach3_data: {}
