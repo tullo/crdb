@@ -1,0 +1,15 @@
+services:
+  crdb:
+    image: cockroachdb/cockroach:v20.2.8
+    command: start-single-node --insecure --listen-addr=0.0.0.0
+    container_name: crdb
+    healthcheck:
+      interval: 10s
+      retries: 5
+      timeout: 5s
+      test: ["CMD", "/cockroach/cockroach", "node", "status", "--insecure"]
+    ports:
+    - published: 8080
+      target: 8080
+    - published: 26257
+      target: 26257
