@@ -17,3 +17,4 @@ driver-pgx/driver-pgx
 driver-pg/driver-pg
 gorm/gorm
 upper/upper
+company/gorm/gorm
