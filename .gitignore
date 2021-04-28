@@ -18,3 +18,4 @@ driver-pg/driver-pg
 gorm/gorm
 upper/upper
 company/gorm/gorm
+company/gopg/gopg
