@@ -1,5 +1,7 @@
 # Cockroach DB for local Development
 
+Doc: [Cockroach Commands](https://www.cockroachlabs.com/docs/v20.2/cockroach-commands.html)
+
 ## Single Node DB
 
 ```sh
