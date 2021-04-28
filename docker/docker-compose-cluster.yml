@@ -4,7 +4,7 @@ networks:
 services:
   roach1:
     image: cockroachdb/cockroach:v20.2.8
-    command: start --insecure --advertise-addr=roach1 --join=roach1,roach2,roach3 --cluster-name=tullo
+    command: start --insecure --advertise-addr=roach1 --join=roach1,roach2,roach3 --cluster-name=tulloroach
     healthcheck:
       interval: 10s
       retries: 5
@@ -22,7 +22,7 @@ services:
 
   roach2:
     image: cockroachdb/cockroach:v20.2.8
-    command: start --insecure --advertise-addr=roach2 --join=roach1,roach2,roach3 --cluster-name=tullo
+    command: start --insecure --advertise-addr=roach2 --join=roach1,roach2,roach3 --cluster-name=tulloroach
     depends_on:
       roach1:
         condition: service_started
@@ -33,7 +33,7 @@ services:
 
   roach3:
     image: cockroachdb/cockroach:v20.2.8
-    command: start --insecure --advertise-addr=roach3 --join=roach1,roach2,roach3 --cluster-name=tullo
+    command: start --insecure --advertise-addr=roach3 --join=roach1,roach2,roach3 --cluster-name=tulloroach
     depends_on:
       roach1:
         condition: service_started
@@ -44,7 +44,7 @@ services:
 
   init-cluster:
     image: cockroachdb/cockroach:v20.2.8
-    command: init --insecure --host=roach1:26257 --cluster-name=tullo
+    command: init --insecure --host=roach1:26257 --cluster-name=tulloroach
     depends_on:
       roach1:
         condition: service_started
