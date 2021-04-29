@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS orders
+(
+   id INT PRIMARY KEY,
+   customer_id INT REFERENCES customers,
+   name VARCHAR (50) UNIQUE NOT NULL,
+   subtotal NUMERIC DEFAULT 99.9 NOT NULL
+);
