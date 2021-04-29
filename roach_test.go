@@ -1,4 +1,4 @@
-package roachdbtest
+package main
 
 import (
 	"context"
@@ -64,6 +64,11 @@ func TestRoachIntegration(t *testing.T) {
 	}); err != nil {
 		t.Errorf("Could not connect to database: %s", err)
 	}
+	defer func() {
+		if err := db.Close(); err != nil {
+			t.Log("close error:", err)
+		}
+	}()
 
 	t.Logf("Stats %+v", db.Stats())
 	_, err = db.Exec("SELECT 1")
