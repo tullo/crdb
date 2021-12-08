@@ -1,4 +1,17 @@
-# Bank Example
+# Go Postgres driver for database/sql
+
+- https://github.com/lib/pq
+- https://pkg.go.dev/github.com/lib/pq
+
+```sh
+# This package is currently in maintenance mode!
+```
+
+## Driver
+
+`go get github.com/lib/pq@latest`
+
+## Bank Example
 
 [Covered steps](https://github.com/cockroachlabs/hello-world-go-pq):
 - Create a table in the bank database.
@@ -14,8 +27,6 @@ CREATE USER johndoe WITH PASSWORD gopher;
 GRANT ALL ON DATABASE bank TO johndoe;
 -- DROP DATABASE bank CASCADE;
 ```
-
-## Driver `github.com/lib/pq`
 
 `go build .`
 
