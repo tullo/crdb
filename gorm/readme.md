@@ -1,4 +1,17 @@
-# Bank Example
+# GORM
+
+- https://gorm.io/
+- https://pkg.go.dev/gorm.io/gorm
+
+## Driver
+
+`go get gorm.io/gorm@latest`
+
+## Transaction Retry Support
+
+https://github.com/cockroachdb/cockroach-go/tree/master/crdb/crdbgorm
+
+## Bank Example
 
 [Covered steps](https://github.com/cockroachlabs/hello-world-go-gorm):
 - Use  GORM to map Go-specific objects to SQL operations.
