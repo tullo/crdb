@@ -1,4 +1,8 @@
-# Company API using GORM
+# ORM library for Golang
+
+https://gorm.io/
+
+## Company API using GORM
 
 - `go get gorm.io/gorm@latest`
 - `go get gorm.io/driver/postgres@latest`

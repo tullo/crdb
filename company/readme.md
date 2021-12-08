@@ -1,4 +1,4 @@
 # Go ORM libs
 
-- [go-pg](https://pg.uptrace.dev/) PostgreSQL client and ORM for Go
-- [gorm](https://gorm.io/) ORM library for Golang 
+- [go-pg](gopg/readme.md) PostgreSQL client and ORM for Go (maintenance mode)
+- [gorm](gorm/readme.md) ORM library for Golang
