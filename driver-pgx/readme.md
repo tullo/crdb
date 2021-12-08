@@ -1,4 +1,13 @@
-# Bank Example
+# PostgreSQL driver and toolkit for Go
+
+- https://github.com/jackc/pgx
+- https://pkg.go.dev/github.com/jackc/pgx/v4
+
+## Driver
+
+`go get github.com/jackc/pgx/v4@latest`
+
+## Bank Example
 
 [Covered steps](https://github.com/cockroachlabs/hello-world-go-pgx):
 - Create a table in the bank database.
@@ -24,4 +33,13 @@ Initial balances:
 1 1000
 2 250
 Success
+```
+
+## DB
+
+```sh
+cd docker
+docker-compose up -d
+
+cockroach sql --insecure --url postgresql://0.0.0.0:26257
 ```
