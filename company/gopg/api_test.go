@@ -31,11 +31,11 @@ func TestCompanyAPI(t *testing.T) {
 	o := createOrder(t, strings.NewReader(fmt.Sprintf(
 		`{"subtotal": 630.08,"customer": {"id": %d},"products": [{"id": %d}]}`, c.ID, p.ID)))
 
-	t.Logf("Order %v", o)
+	t.Logf("Order %+v", o)
 }
 
 func createCustomer(t *testing.T, payload io.Reader) *model.Customer {
-	res, err := http.Post("http://api.0.0.0.0.xip.io:6543/customer",
+	res, err := http.Post("http://api.0.0.0.0.nip.io:6543/customer",
 		"application/json; charset=UTF-8", payload)
 	if err != nil {
 		t.Fatal("error creating customer", err)
@@ -52,12 +52,13 @@ func createCustomer(t *testing.T, payload io.Reader) *model.Customer {
 	if err := json.NewDecoder(res.Body).Decode(&c); err != nil {
 		t.Fatal("error decoding customer", err)
 	}
+	t.Log("createCustomer", c.ID)
 
 	return &c
 }
 
 func getProducts(t *testing.T) []model.Product {
-	res, err := http.Get("http://api.0.0.0.0.xip.io:6543/product")
+	res, err := http.Get("http://api.0.0.0.0.nip.io:6543/product")
 	if err != nil {
 		t.Error("error retrieving products", err)
 	}
@@ -73,12 +74,13 @@ func getProducts(t *testing.T) []model.Product {
 	if err := json.NewDecoder(res.Body).Decode(&ps); err != nil {
 		t.Fatal("error decoding products", err)
 	}
+	t.Log("getProducts", len(ps))
 
 	return ps
 }
 
 func createProduct(t *testing.T, payload io.Reader) *model.Product {
-	res, err := http.Post("http://api.0.0.0.0.xip.io:6543/product",
+	res, err := http.Post("http://api.0.0.0.0.nip.io:6543/product",
 		"application/json; charset=UTF-8", payload)
 	if err != nil {
 		t.Error("error creating product", err)
@@ -95,12 +97,13 @@ func createProduct(t *testing.T, payload io.Reader) *model.Product {
 	if err := json.NewDecoder(res.Body).Decode(&p); err != nil {
 		t.Fatal("error decoding product", err)
 	}
+	t.Log("createProduct", p.ID)
 
 	return &p
 }
 
 func createOrder(t *testing.T, payload io.Reader) *model.Order {
-	res, err := http.Post("http://api.0.0.0.0.xip.io:6543/order",
+	res, err := http.Post("http://api.0.0.0.0.nip.io:6543/order",
 		"application/json; charset=UTF-8", payload)
 	if err != nil {
 		t.Error("error creating order", err)
@@ -118,6 +121,7 @@ func createOrder(t *testing.T, payload io.Reader) *model.Order {
 	if err := json.NewDecoder(res.Body).Decode(&o); err != nil {
 		t.Fatal("error decoding order", err)
 	}
+	t.Log("createOrder", o.ID)
 
 	return &o
 }
