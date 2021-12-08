@@ -21,7 +21,7 @@ var (
 	opts = dktest.Options{Cmd: []string{"start-single-node", "--insecure", "--listen-addr=0.0.0.0"}, PortRequired: true, ReadyFunc: isReady}
 	// Released versions: https://www.cockroachlabs.com/docs/releases/
 	specs = []dktesting.ContainerSpec{
-		{ImageName: "cockroachdb/cockroach:v20.2.8", Options: opts},
+		{ImageName: "cockroachdb/cockroach:v21.2.2", Options: opts},
 	}
 )
 

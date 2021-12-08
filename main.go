@@ -44,7 +44,7 @@ func startContainer(pool *dockertest.Pool) (*dockertest.Resource, error) {
 	options := dockertest.RunOptions{
 		Name:       "crdb",
 		Repository: "cockroachdb/cockroach",
-		Tag:        "v20.2.8",
+		Tag:        "v21.2.2",
 		PortBindings: map[docker.Port][]docker.PortBinding{
 			docker.Port("26257/tcp"): {{HostIP: "", HostPort: "26257"}},
 			docker.Port("8080/tcp"):  {{HostIP: "", HostPort: "8080"}},
