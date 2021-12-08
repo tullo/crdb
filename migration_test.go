@@ -12,19 +12,45 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/database/cockroachdb"
 	"github.com/golang-migrate/migrate/v4/dktesting"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
-	// 	dt "github.com/golang-migrate/migrate/v4/database/testing"
 )
 
 const defaultPort = 26257
 
 var (
-	opts = dktest.Options{Cmd: []string{"start-single-node", "--insecure", "--listen-addr=0.0.0.0"}, PortRequired: true, ReadyFunc: isReady}
+	opts = dktest.Options{
+		Cmd:          []string{"start-single-node", "--insecure", "--listen-addr=0.0.0.0"},
+		PortRequired: true,
+		ReadyFunc:    isReady,
+	}
 	// Released versions: https://www.cockroachlabs.com/docs/releases/
 	specs = []dktesting.ContainerSpec{
 		{ImageName: "cockroachdb/cockroach:v21.2.2", Options: opts},
 	}
 )
 
+func isReady(ctx context.Context, c dktest.ContainerInfo) bool {
+	ip, port, err := c.Port(defaultPort)
+	if err != nil {
+		log.Println("port error:", err)
+		return false
+	}
+
+	db, err := sql.Open("postgres", fmt.Sprintf("postgres://root@%v:%v?sslmode=disable", ip, port))
+	if err != nil {
+		log.Println("open error:", err)
+		return false
+	}
+	if err := db.PingContext(ctx); err != nil {
+		log.Println("ping error:", err)
+		return false
+	}
+	if err := db.Close(); err != nil {
+		log.Println("close error:", err)
+	}
+	return true
+}
+
+// Creates database migtest.
 func createDB(t *testing.T, c dktest.ContainerInfo) {
 	ip, port, err := c.Port(defaultPort)
 	if err != nil {
@@ -49,7 +75,10 @@ func createDB(t *testing.T, c dktest.ContainerInfo) {
 	}
 }
 
+// Processes migration files located under db/migrations
+// by applying all up migrations.
 func TestMigrate(t *testing.T) {
+	// Launch db container and call provided testFunc.
 	dktesting.ParallelTest(t, specs, func(t *testing.T, ci dktest.ContainerInfo) {
 		createDB(t, ci)
 
@@ -63,31 +92,8 @@ func TestMigrate(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		//dt.TestMigrate(t, m)
 		if err := m.Up(); err != nil {
 			log.Fatal(err)
 		}
 	})
-}
-
-func isReady(ctx context.Context, c dktest.ContainerInfo) bool {
-	ip, port, err := c.Port(defaultPort)
-	if err != nil {
-		log.Println("port error:", err)
-		return false
-	}
-
-	db, err := sql.Open("postgres", fmt.Sprintf("postgres://root@%v:%v?sslmode=disable", ip, port))
-	if err != nil {
-		log.Println("open error:", err)
-		return false
-	}
-	if err := db.PingContext(ctx); err != nil {
-		log.Println("ping error:", err)
-		return false
-	}
-	if err := db.Close(); err != nil {
-		log.Println("close error:", err)
-	}
-	return true
 }
