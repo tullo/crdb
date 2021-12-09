@@ -19,3 +19,10 @@ gorm/gorm
 upper/upper
 company/gorm/gorm
 company/gopg/gopg
+secure-cluster/certs
+secure-cluster/private
+secure-cluster/node1
+secure-cluster/node2
+secure-cluster/node3
+secure-cluster/node4
+secure-cluster/node5
