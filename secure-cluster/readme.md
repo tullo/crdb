@@ -1,6 +1,13 @@
 # Local Secure Cluster
 
-## Step 1. [Generate certificates](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-1-generate-certificates)
+## TLDR
+
+- Create 3-node cluster: `make`
+- Add two more nodes: `make cluster-scale`
+- Run movr load-test: `make movr-run`
+- Simulate node failure: `make crdb-node3-quit`
+
+### Step 1. [Generate certificates](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-1-generate-certificates)
 
 ```sh
 make dirs      # Create dirs: certs & private.
@@ -9,7 +16,7 @@ make node-cert # Create certificate and key pair for your nodes.
 client-cert    # Create a client certificate and key pair for the root user.
 ```
 
-## Step 2. [Start the cluster](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-2-start-the-cluster)
+### Step 2. [Start the cluster](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-2-start-the-cluster)
 
 Start the first node:
 
@@ -44,7 +51,25 @@ Perform a one-time initialization of the cluster:
 Cluster successfully initialized
 ```
 
-## Step 3. [Use the built-in SQL client](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-3-use-the-built-in-sql-client)
+At this point, each node also prints helpful startup details to its log. 
+
+```sh
+# make cluster-logs 
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +CockroachDB node starting at 2021-12-10 10:33:37.127798352 +0000 UTC (took 1.0s)
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +build:               CCL v21.2.2 @ 2021/12/01 14:35:45 (go1.16.6)
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +webui:               ‹https://localhost:8080›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +sql:                 ‹postgresql://root@localhost:26257/defaultdb?sslcert=certs%2Fclient.root.crt&sslkey=certs%2Fclient.root.key&sslmode=verify-full&sslrootcert=certs%2Fca.crt›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +sql (JDBC):          ‹jdbc:postgresql://localhost:26257/defaultdb?sslcert=certs%2Fclient.root.crt&sslkey=certs%2Fclient.root.key&sslmode=verify-full&sslrootcert=certs%2Fca.crt&user=root›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +RPC client flags:    ‹cockroach <client cmd> --host=localhost:26257 --certs-dir=certs›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +logs:                ‹/home/anda/code/tullo/cockroachdb/crdb/secure-cluster/node1/logs›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +temp dir:            ‹/home/anda/code/tullo/cockroachdb/crdb/secure-cluster/node1/cockroach-temp195790147›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +external I/O path:   ‹/home/anda/code/tullo/cockroachdb/crdb/secure-cluster/node1/extern›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +store[0]:            ‹path=/home/anda/code/tullo/cockroachdb/crdb/secure-cluster/node1›
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +storage engine:      pebble
+I211210 10:33:37.128094 85 1@cli/start.go:759 ⋮ [-] 70 +status:              initialized new cluster
+```
+
+### Step 3. [Use the built-in SQL client](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-3-use-the-built-in-sql-client)
 
 You can use any node as a SQL gateway.
 
@@ -73,7 +98,7 @@ root@localhost:26257/defaultdb> \q
 ```
 
 
-## Step 4. [Run a sample workload](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-4-run-a-sample-workload)
+### Step 4. [Run a sample workload](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-4-run-a-sample-workload)
 
 Load the initial dataset for the movr workload.
 
@@ -164,7 +189,7 @@ _elapsed___errors_____ops(total)___ops/sec(cum)__avg(ms)__p50(ms)__p95(ms)__p99(
   300.0s        0          64885          216.3      4.6      0.5     18.9    117.4    260.0  
 ```
 
-## Step 5. [Access the DB Console](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-5-access-the-db-console)
+### Step 5. [Access the DB Console](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-5-access-the-db-console)
 
 The CockroachDB DB Console gives you insight into the overall health of your cluster as well as the performance of the client workload.
 
@@ -182,7 +207,7 @@ On the [Cluster Overview](https://localhost:8080/#/overview/list), notice that t
 
 This demonstrates CockroachDB's [automated replication](https://www.cockroachlabs.com/docs/v21.1/demo-replication-and-rebalancing) of data via the Raft consensus protocol.
 
-## Step 6. [Simulate node failure](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-6-simulate-node-failure)
+### Step 6. [Simulate node failure](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-6-simulate-node-failure)
 
 Run the cockroach quit command against a node to simulate a node failure:
 
@@ -197,7 +222,7 @@ Killed 319954
 
 This demonstrates CockroachDB's use of the Raft consensus protocol to maintain availability and consistency in the face of failure; as long as a majority of replicas remain online, the cluster and client traffic continue uninterrupted.
 
-## Step 7. [Scale the cluster](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-7-scale-the-cluster)
+### Step 7. [Scale the cluster](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-7-scale-the-cluster)
 
 Adding capacity is as simple as starting more nodes with `cockroach start`.
 
@@ -206,18 +231,27 @@ Adding capacity is as simple as starting more nodes with `cockroach start`.
 * INFO: initial startup completed.
 * Node will now attempt to join a running cluster, or wait for `cockroach init`.
 * Client connections will be accepted after this completes successfully.
-* Check the log file(s) for progress. 
+* Check the log file(s) for progress.
 
 # make crdb-node5
 * INFO: initial startup completed.
 * Node will now attempt to join a running cluster, or wait for `cockroach init`.
 * Client connections will be accepted after this completes successfully.
-* Check the log file(s) for progress. 
+* Check the log file(s) for progress.
+
+  id |     address     |   sql_address   |  build  |         started_at         |         updated_at         | locality | is_available | is_live
+-----+-----------------+-----------------+---------+----------------------------+----------------------------+----------+--------------+----------
+   1 | localhost:26257 | localhost:26257 | v21.2.2 | 2021-12-10 09:38:52.772638 | 2021-12-10 09:39:01.794737 |          | true         | true
+   2 | localhost:26258 | localhost:26258 | v21.2.2 | 2021-12-10 09:38:53.41289  | 2021-12-10 09:39:02.422963 |          | true         | true
+   3 | localhost:26259 | localhost:26259 | v21.2.2 | 2021-12-10 09:38:53.59724  | 2021-12-10 09:39:02.609088 |          | true         | true
+   4 | localhost:26260 | localhost:26260 | v21.2.2 | 2021-12-10 09:39:00.153776 | 2021-12-10 09:39:00.223274 |          | true         | true
+   5 | localhost:26261 | localhost:26261 | v21.2.2 | 2021-12-10 09:39:00.355572 | 2021-12-10 09:39:00.423948 |          | true         | true
+(5 rows)
 ```
 
 At first, the replica count will be lower for nodes 4 and 5. Very soon, however, you'll see those numbers even out across all nodes, indicating that data is being automatically rebalanced to utilize the additional capacity of the new nodes.
 
-## Step 8. [Stop the cluster](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-8-stop-the-cluster)
+### Step 8. [Stop the cluster](https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster#step-8-stop-the-cluster)
 
 When you're done with your test cluster, use the `cockroach node drain` command to gracefully shut down each node.
 

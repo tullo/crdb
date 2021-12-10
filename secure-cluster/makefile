@@ -1,11 +1,14 @@
 SHELL := /bin/bash -eo pipefail
 
-.PHONY : client-cert crdb-node1 crdb-node2 crdb-node3 crdb-node4 crdb-node5 cluster-init sql-client-node2 movr-initial-dataset movr-run crdb-node3-quit cluster-stop
+.DEFAULT_GOAL := cluster
+
+clean: cluster-stop
+	@rm -rf certs node1 node2 node3 node4 node5 private
 
 dirs:
-	@mkdir certs private
+	@mkdir -p certs private
 
-ca:
+ca: dirs
 	@cockroach cert create-ca --certs-dir=certs --ca-key=private/ca.key
 
 node-cert:
@@ -13,6 +16,24 @@ node-cert:
 
 client-cert:
 	@cockroach cert create-client root --certs-dir=certs --ca-key=private/ca.key
+
+certs: ca node-cert client-cert
+
+CLUSTER = node1 node2 node3 node4 node5
+
+cluster: certs crdb-node1 crdb-node2 crdb-node3 cluster-init
+	@sleep 3
+	@make cluster-logs
+
+cluster-scale: crdb-node4 crdb-node5
+	@sleep 3
+	@cockroach node status --certs-dir=certs
+
+cluster-stop:
+	@for n in $(CLUSTER); do bash terminateprocess.sh $$n; done
+	@echo "waiting 15 seconds ..."
+	@sleep 15
+	@for n in $(CLUSTER); do bash killprocess.sh $$n; done
 
 crdb-node1:
 	@cockroach start --certs-dir=certs --store=node1 \
@@ -35,6 +56,10 @@ crdb-node3:
 	--join=localhost:26257,localhost:26258,localhost:26259 \
 	--background
 
+crdb-node3-quit:
+	@cockroach node drain --certs-dir=certs --host=localhost:26259
+	@bash killprocess.sh node3
+
 crdb-node4:
 	@cockroach start --certs-dir=certs --store=node4 \
 	--listen-addr=localhost:26260 \
@@ -50,7 +75,7 @@ crdb-node5:
 	--background
 
 cluster-init:
-	@cockroach init --certs-dir=certs --host=localhost:26257
+	cockroach init --certs-dir=certs --host=localhost:26257
 
 cluster-logs:
 	@grep 'node starting' node1/logs/cockroach.log -A 11
@@ -65,17 +90,8 @@ movr-initial-dataset:
 	@cockroach workload init movr \
 	'postgresql://root@localhost:26257?sslcert=certs%2Fclient.root.crt&sslkey=certs%2Fclient.root.key&sslmode=verify-full&sslrootcert=certs%2Fca.crt'
 
-movr-run:
+movr-run: movr-initial-dataset
 	@cockroach workload run movr \
 	--duration=5m 'postgresql://root@localhost:26257?sslcert=certs%2Fclient.root.crt&sslkey=certs%2Fclient.root.key&sslmode=verify-full&sslrootcert=certs%2Fca.crt'
 
-crdb-node3-quit:
-	@cockroach node drain --certs-dir=certs --host=localhost:26259
-	@bash killprocess.sh node3
-
-cluster-stop: CLUSTER = node1 node2 node3 node4 node5
-cluster-stop:
-	@for n in $(CLUSTER); do bash terminateprocess.sh $$n; done
-	@echo "waiting 10 seconds ..."
-	@sleep 15
-	@for n in $(CLUSTER); do bash killprocess.sh $$n; done
+.PHONY : crdb-node1 crdb-node2 crdb-node3 crdb-node4 crdb-node5 cluster-init sql-client-node2 movr-initial-dataset movr-run crdb-node3-quit cluster-stop
