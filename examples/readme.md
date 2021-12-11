@@ -27,3 +27,9 @@ users, photos and comments.
   - User actions are simulated
 using an exponential distribution on user IDs, so lower IDs see
 more activity than high ones.
+
+## wikifeedia
+
+Sample application highlighting the benefits of using CockroachDB, specifically `Follower Reads`.
+
+https://github.com/tullo/wikifeedia (Go & React)
