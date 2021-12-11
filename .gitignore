@@ -26,3 +26,6 @@ secure-cluster/node2
 secure-cluster/node3
 secure-cluster/node4
 secure-cluster/node5
+testsupport/goroutine_dump
+testsupport/heap_profiler
+testsupport/inflight_trace_dump

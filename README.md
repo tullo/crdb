@@ -1,6 +1,36 @@
 # crdb
 
+- Go Drivers
+  - [pg](driver-pg/)
+  - [pgx](driver-pgx/)
+  - [pgxpool](https://www.cockroachlabs.com/docs/stable/connection-pooling.html?filters=go) connections = (processor_cores * 4)
 - Go [ORM](company/readme.md) libs
+- Releases
+  - [Linux](https://www.cockroachlabs.com/docs/releases/index.html)
+  - [Docker](https://www.cockroachlabs.com/docs/releases/index.html?filters=docker)
+
+## Testserver
+
+The testserver package helps running CRDB binary with tests.
+
+```go
+  import "github.com/cockroachdb/cockroach-go/v2/testserver"
+  import "testing"
+  import "time"
+
+  func TestRunServer(t *testing.T) {
+     ts, err := testserver.NewTestServer()
+     if err != nil {
+       t.Fatal(err)
+     }
+     defer ts.Stop()
+
+     db, err := sql.Open("postgres", ts.PGURL().String())
+     if err != nil {
+       t.Fatal(err)
+     }
+   }
+```
 
 ## Integration Test
 
