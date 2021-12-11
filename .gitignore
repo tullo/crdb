@@ -29,3 +29,6 @@ secure-cluster/node5
 testsupport/goroutine_dump
 testsupport/heap_profiler
 testsupport/inflight_trace_dump
+cockroach-data
+certs
+private
