@@ -1,12 +1,12 @@
 # PostgreSQL client and ORM for Go
 
-https://pg.uptrace.dev/ (maintenance mode)
+https://pg.uptrace.dev/
+
+> go-pg is in a maintenance mode and will NOT receive new features. Please use [Bun](https://bun.uptrace.dev/) instead.
 
 # Company API using go-pg
 
 - `go get github.com/go-pg/pg/v10@latest`
-
-> go-pg is in a maintenance mode and will NOT receive new features. Please use [Bun](https://bun.uptrace.dev/) instead.
 
 ## TestCompanyAPI
 

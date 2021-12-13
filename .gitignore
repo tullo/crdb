@@ -17,6 +17,7 @@ driver-pgx/driver-pgx
 driver-pg/driver-pg
 gorm/gorm
 upper/upper
+company/bun/gobun
 company/gorm/gorm
 company/gopg/gopg
 secure-cluster/certs
