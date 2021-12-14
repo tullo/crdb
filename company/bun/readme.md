@@ -4,7 +4,7 @@ https://bun.uptrace.dev/
 
 > Bun comes with its own PostgreSQL driver called pgdriver.
 
-# Company API using go-pg
+# Company API using bun/pgdriver
 
 - `go get github.com/uptrace/bun/driver/pgdriver@v1.0.19`
 
@@ -35,3 +35,7 @@ ok  	github.com/tullo/crdb/company/gobun	0.115s
 cockroach sql --insecure -e "DROP DATABASE company_bun CASCADE;"
 cd ../../ && make clean
 ```
+
+## Bun realworld application
+
+https://github.com/tullo/bun-realworld-app
