@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/cockroachdb/cockroach-go/v2/crdb"
+	"github.com/cockroachdb/cockroach-go/v2/testserver"
 	_ "github.com/lib/pq"
 	"github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"
@@ -28,11 +29,11 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func TestRoachIntegration(t *testing.T) {
+func TestWithDockerContainer(t *testing.T) {
 	options := dockertest.RunOptions{
 		Name:       "crdb",
 		Repository: "cockroachdb/cockroach",
-		Tag:        "v21.2.2",
+		Tag:        "v21.2.3",
 		PortBindings: map[docker.Port][]docker.PortBinding{
 			docker.Port("26257/tcp"): {{HostIP: "", HostPort: "26257"}},
 			docker.Port("8080/tcp"):  {{HostIP: "", HostPort: "8080"}},
@@ -105,6 +106,43 @@ func TestRoachIntegration(t *testing.T) {
 	if err := pool.Purge(container); err != nil {
 		t.Errorf("Could not purge resource: %s", err)
 	}
+}
+
+func TestWithTestServer(t *testing.T) {
+	ts, err := testserver.NewTestServer()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer ts.Stop()
+
+	db, err := sql.Open("postgres", ts.PGURL().String())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if _, err = db.Exec(
+		"CREATE TABLE IF NOT EXISTS accounts (id INT PRIMARY KEY, balance INT)"); err != nil {
+		t.Error("Could not create table:", err)
+	}
+
+	if _, err = db.Exec(
+		"INSERT INTO accounts (id, balance) VALUES (1, 1000), (2, 250)"); err != nil {
+		t.Error("Could not insert row:", err)
+	}
+
+	printBalances(t, db, "")
+	// Run a transfer in a transaction.
+	if err = crdb.ExecuteTx(context.Background(), db, nil, func(tx *sql.Tx) error {
+		return transferFunds(tx,
+			1,   /* from acct# */
+			2,   /* to acct# */
+			100, /* amount */
+		)
+	}); err != nil {
+		t.Error("Could not execute transaction:", err)
+	}
+
+	printBalances(t, db, "after tx")
 }
 
 func transferFunds(tx *sql.Tx, from int, to int, amount int) error {

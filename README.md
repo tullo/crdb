@@ -32,16 +32,18 @@ The testserver package helps running CRDB binary with tests.
    }
 ```
 
-## Integration Test
+## Integration Tests
+
+### CRDB Docker Container
 
 Launches a single node cockroachdb in a docker container using the [github.com/ory/dockertest/v3/docker](https://github.com/ory/dockertest) package and executes the test function.
 
 ```sh
-# 1. Pulls docker image cockroachdb/cockroach:v21.2.2
-# 2. Executes tests located in roach_test.go
-go test -v -timeout 30s -run ^TestRoachIntegration$ github.com/tullo/crdb
+# 1. Pulls docker image cockroachdb/cockroach:v21.2.3
+# 2. Executes TestWithDockerContainer test func located in roach_test.go
+go test -v -timeout 30s -run ^TestWithDockerContainer$ github.com/tullo/crdb
 
-=== RUN   TestRoachIntegration
+=== RUN   TestWithDockerContainer
     roach_test.go:58: ping postgresql://admin@0.0.0.0:26257?sslmode=disable
     roach_test.go:58: ping postgresql://admin@0.0.0.0:26257?sslmode=disable
     roach_test.go:73: Stats {MaxOpenConnections:0 OpenConnections:1 InUse:0 Idle:1 WaitCount:0 WaitDuration:0s MaxIdleClosed:0 MaxIdleTimeClosed:0 MaxLifetimeClosed:0}
@@ -51,9 +53,33 @@ go test -v -timeout 30s -run ^TestRoachIntegration$ github.com/tullo/crdb
     roach_test.go:140: Balances: after tx
     roach_test.go:146: 1 900
     roach_test.go:146: 2 350
---- PASS: TestRoachIntegration (1.55s)
+--- PASS: TestWithDockerContainer (1.55s)
 PASS
 ok  	github.com/tullo/crdb	1.560s
+```
+
+### CRDB Test Server
+
+Launches a single node cockroachdb using the [cockroach-go/v2/testserver](https://pkg.go.dev/github.com/cockroachdb/cockroach-go/v2/testserver) package and executes the test function.
+
+```sh
+# 1. Pulls the latest cockroach binary.
+# 2. Executes TestWithTestServer test func located in roach_test.go
+go test -v -timeout 30s -run ^TestWithTestServer$ github.com/tullo/crdb
+
+=== RUN   TestWithTestServer
+2021/12/23 16:25:35 GET https://binaries.cockroachdb.com/cockroach-v21.2.3.linux-amd64.tgz
+2021/12/23 16:25:35 Using automatically-downloaded binary: /tmp/cockroach-21-2-3
+    roach_test.go:184: Balances:
+    roach_test.go:190: 1 1000
+    roach_test.go:190: 2 250
+    roach_test.go:184: Balances: after tx
+    roach_test.go:190: 1 900
+    roach_test.go:190: 2 350
+--- PASS: TestWithTestServer (0.75s)
+PASS
+ok  	github.com/tullo/crdb	0.758s
+
 ```
 
 ## Migrations Test
