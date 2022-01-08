@@ -16,8 +16,7 @@ cd docker
 docker-compose --verbose up -d
 
 # connect and create test database.
-cockroach sql --insecure --url postgresql://0.0.0.0:26257
-root@0.0.0.0:26257/defaultdb> CREATE DATABASE IF NOT EXISTS company_gopg;
+cockroach sql --insecure -e "CREATE DATABASE IF NOT EXISTS company_gopg;"
 
 # build and start the app.
 cd ../company/gopg
