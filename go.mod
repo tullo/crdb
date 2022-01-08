@@ -3,7 +3,7 @@ module github.com/tullo/crdb
 go 1.17
 
 require (
-	github.com/cockroachdb/cockroach-go/v2 v2.2.4
+	github.com/cockroachdb/cockroach-go/v2 v2.2.5
 	github.com/dhui/dktest v0.3.8
 	github.com/golang-migrate/migrate/v4 v4.15.1
 	github.com/jackc/pgx/v4 v4.14.1
