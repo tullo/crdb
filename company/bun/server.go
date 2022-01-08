@@ -1,12 +1,12 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"strconv"
 
-	"github.com/go-pg/pg/v10"
 	"github.com/julienschmidt/httprouter"
 	"github.com/tullo/crdb/company/gobun/model"
 	"github.com/uptrace/bun"
@@ -65,6 +65,8 @@ func (s *Server) createCustomer(w http.ResponseWriter, r *http.Request, ps httpr
 		http.Error(w, err.Error(), errToStatusCode(err))
 		return
 	}
+
+	// 	res, err := s.db.NewInsert().Model(&customer).Returning("id").Exec(r.Context(), &customer)
 
 	if _, err := s.db.NewInsert().Model(&customer).Exec(r.Context()); err != nil {
 		http.Error(w, err.Error(), errToStatusCode(err))
@@ -389,7 +391,7 @@ func writeMissingParamError(w http.ResponseWriter, paramName string) {
 
 func errToStatusCode(err error) int {
 	switch err {
-	case pg.ErrNoRows:
+	case sql.ErrNoRows:
 		return http.StatusNotFound
 	default:
 		return http.StatusInternalServerError
