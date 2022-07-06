@@ -107,3 +107,37 @@ go test -v -timeout 30s -run ^TestMigrate$ github.com/tullo/crdb
 PASS
 ok  	github.com/tullo/crdb	7.527s
 ```
+
+## Secure Mode
+
+Start a local secure db node with `make secure-node`.
+
+Run `make secure-sql-insert` to create db objects and grant privileges.
+
+Check grants:
+
+```sql
+-- cockroach sql --certs-dir=certs --database bank -e 'SHOW GRANTS ON TABLE accounts;'
+  database_name | schema_name | table_name | grantee | privilege_type | is_grantable
+----------------+-------------+------------+---------+----------------+---------------
+  bank          | public      | accounts   | admin   | ALL            |     true
+  bank          | public      | accounts   | johndoe | INSERT         |    false
+  bank          | public      | accounts   | johndoe | SELECT         |    false
+  bank          | public      | accounts   | johndoe | UPDATE         |    false
+  bank          | public      | accounts   | root    | ALL            |     true
+(5 rows)
+```
+
+### Secure Client Connection
+
+Client code connects using the generated certificates:
+
+```go
+// driver-pgx/main.go
+certs := "/path/to/certs%2F"
+crt := fmt.Sprintf("sslcert=%sclient.johndoe.crt", certs)
+key := fmt.Sprintf("sslkey=%sclient.johndoe.key", certs)
+ca := fmt.Sprintf("sslrootcert=%sca.crt", certs)
+secure := fmt.Sprintf("postgresql://johndoe@localhost:26257/bank?%s&%s&%s&sslmode=verify-full", crt, key, ca)
+config, err := pgx.ParseConfig(secure)
+```
