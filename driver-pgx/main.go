@@ -34,7 +34,14 @@ func transferFunds(ctx context.Context, tx pgx.Tx, from int, to int, amount int)
 }
 
 func main() {
-	config, err := pgx.ParseConfig("postgresql://johndoe@0.0.0.0:26257/bank?sslmode=disable")
+	// Secure connection using generated certs.
+	certs := "/path/to/certs%2F"
+	crt := fmt.Sprintf("sslcert=%sclient.johndoe.crt", certs)
+	key := fmt.Sprintf("sslkey=%sclient.johndoe.key", certs)
+	ca := fmt.Sprintf("sslrootcert=%sca.crt", certs)
+	secure := fmt.Sprintf("postgresql://johndoe@localhost:26257/bank?%s&%s&%s&sslmode=verify-full", crt, key, ca)
+	_ = secure
+	config, err := pgx.ParseConfig("postgresql://johndoe@localhost:26257/bank?sslmode=disable")
 	if err != nil {
 		log.Fatal("error configuring the database: ", err)
 	}
