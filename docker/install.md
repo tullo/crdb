@@ -3,7 +3,7 @@
 ## Launch VM
 
 ```sh
-multipass launch --name primary --cpus 4
+multipass launch --name primary --cpus 4 --mem 3G
 ```
 
 ## Install Docker-Compose
