@@ -37,11 +37,17 @@ func TestRunServer(t *testing.T) {
 go test -race -v
 
 === RUN   TestRunServer
-2021/12/11 10:57:36 GET https://binaries.cockroachdb.com/cockroach-v21.2.2.linux-amd64.tgz
-2021/12/11 10:57:36 Using automatically-downloaded binary: /tmp/cockroach-21-2-2
-2021/12/11 10:57:36 executing: /tmp/cockroach-21-2-2 start-single-node --logtostderr --insecure --host=localhost --port=0 --http-port=0 --store=type=mem,size=0.20 --listening-url-file=/tmp/cockroach-testserver832636131/listen-url
-2021/12/11 10:57:36 process 412373 started: /tmp/cockroach-21-2-2 start-single-node --logtostderr --insecure --host=localhost --port=0 --http-port=0 --store=type=mem,size=0.20 --listening-url-file=/tmp/cockroach-testserver832636131/listen-url
---- PASS: TestRunServer (0.75s)
+2022/07/06 10:00:05 GET https://binaries.cockroachdb.com/cockroach-v22.1.2.linux-amd64.tgz
+2022/07/06 10:00:05 Using automatically-downloaded binary: /tmp/cockroach-22-1-2
+2022/07/06 10:00:05 executing: /tmp/cockroach-22-1-2 start-single-node --logtostderr --insecure --host=localhost --port=0 --http-port=0 --store=type=mem,size=0.20 --listening-url-file=/tmp/cockroach-testserver3503377092/listen-url0
+2022/07/06 10:00:05 process 93304 started: /tmp/cockroach-22-1-2 start-single-node --logtostderr --insecure --host=localhost --port=0 --http-port=0 --store=type=mem,size=0.20 --listening-url-file=/tmp/cockroach-testserver3503377092/listen-url0
+    roach_test.go:178: Balances: 
+    roach_test.go:184: 1 1000
+    roach_test.go:184: 2 250
+    roach_test.go:178: Balances: after tx
+    roach_test.go:184: 1 900
+    roach_test.go:184: 2 350
+--- PASS: TestWithTestServer (1.18s)
 PASS
-ok  	github.com/tullo/crdb/testsupport	0.756s
+ok  	github.com/tullo/crdb	1.213s
 ```

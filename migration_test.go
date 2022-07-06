@@ -24,7 +24,7 @@ var (
 	}
 	// Released versions: https://www.cockroachlabs.com/docs/releases/
 	specs = []dktesting.ContainerSpec{
-		{ImageName: "cockroachdb/cockroach:v21.2.2", Options: opts},
+		{ImageName: "cockroachdb/cockroach:v22.1.2", Options: opts},
 	}
 )
 
