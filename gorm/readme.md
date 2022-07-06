@@ -43,13 +43,25 @@ import (
 
 `go build .`
 
-`./gorm`
+`DATABASE_URL='postgresql://johndoe@localhost:26257/bank?sslmode=disable' ./gorm`
 
 ```console
-Balance at '2021-04-28 11:10:11.868364981 +0200 CEST m=+0.058078433':
-1 1000
-2 250
-Balance at '2021-04-28 11:10:11.877325459 +0200 CEST m=+0.067038908':
-1 900
-2 350
+2022/07/06 13:13:13 Creating 5 new accounts...
+2022/07/06 13:13:13 Accounts created.
+Balance at '2022-07-06 13:13:13.542826662 +0200 CEST m=+0.151700383':
+a3869d47-eeda-4e4c-9564-7ddfc5ac0868 4159
+c22bfbe2-3dcc-495c-b89e-410cef601168 7987
+d205f242-dec4-481c-a5e6-ac83b1d763ee 2181
+dc35d3f6-617c-417e-ae21-2b98dc62a90d 8181
+f5eedc33-c059-4a71-b51c-72acfc3b3f39 1947
+2022/07/06 13:13:13 Transferring 100 from account dc35d3f6-617c-417e-ae21-2b98dc62a90d to account d205f242-dec4-481c-a5e6-ac83b1d763ee...
+2022/07/06 13:13:13 Funds transferred.
+Balance at '2022-07-06 13:13:13.554112895 +0200 CEST m=+0.162986613':
+a3869d47-eeda-4e4c-9564-7ddfc5ac0868 4159
+c22bfbe2-3dcc-495c-b89e-410cef601168 7987
+d205f242-dec4-481c-a5e6-ac83b1d763ee 2281
+dc35d3f6-617c-417e-ae21-2b98dc62a90d 8081
+f5eedc33-c059-4a71-b51c-72acfc3b3f39 1947
+2022/07/06 13:13:13 Deleting accounts created...
+2022/07/06 13:13:13 Accounts deleted.
 ```

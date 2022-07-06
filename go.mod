@@ -6,6 +6,7 @@ require (
 	github.com/cockroachdb/cockroach-go/v2 v2.2.14
 	github.com/dhui/dktest v0.3.10
 	github.com/golang-migrate/migrate/v4 v4.15.2
+	github.com/google/uuid v1.3.0
 	github.com/jackc/pgx/v4 v4.16.1
 	github.com/lib/pq v1.10.6
 	github.com/ory/dockertest/v3 v3.9.1
