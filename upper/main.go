@@ -9,6 +9,17 @@ import (
 	"github.com/upper/db/v4/adapter/cockroachdb"
 )
 
+// The settings variable stores connection details.
+var settings = cockroachdb.ConnectionURL{
+	Host:     "localhost",
+	Database: "bank",
+	User:     "johndoe",
+	Options: map[string]string{
+		// Insecure node.
+		"sslmode": "disable",
+	},
+}
+
 // Accounts is a handy way to represent a collection.
 func Accounts(sess db.Session) db.Store {
 	return sess.Collection("accounts")
@@ -24,6 +35,20 @@ type Account struct {
 // struct and the "accounts" table.
 func (a *Account) Store(sess db.Session) db.Store {
 	return Accounts(sess)
+}
+
+// createTables creates all the tables that are neccessary to run this example.
+func createTables(sess db.Session) error {
+	_, err := sess.SQL().Exec(`
+        CREATE TABLE IF NOT EXISTS accounts (
+            ID SERIAL PRIMARY KEY,
+            balance INT
+        )
+    `)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // crdbForceRetry can be used to simulate a transaction error and
@@ -50,23 +75,14 @@ func crdbForceRetry(sess db.Session) error {
 	// instead of an error.
 	_, err = sess.SQL().Exec(`SELECT crdb_internal.force_retry('1s'::INTERVAL)`)
 	if err != nil {
-		return err
+		return db.ErrTransactionAborted
 	}
 
 	return nil
 }
 
 func main() {
-
-	sess, err := cockroachdb.Open(&cockroachdb.ConnectionURL{
-		Host:     "0.0.0.0",
-		Database: "bank",
-		User:     "johndoe",
-		Options: map[string]string{
-			// Insecure node.
-			"sslmode": "disable",
-		},
-	})
+	sess, err := cockroachdb.Open(settings)
 	if err != nil {
 		log.Fatal("cockroachdb.Open: ", err)
 	}
@@ -75,14 +91,7 @@ func main() {
 	// Adjust this number to fit your specific needs (set to 5, by default)
 	sess.SetMaxTransactionRetries(10)
 
-	if _, err := sess.SQL().Exec(`
-		CREATE TABLE IF NOT EXISTS accounts (
-			ID SERIAL PRIMARY KEY,
-			balance INT
-		)
-	`); err != nil {
-		log.Fatal("failed to create table: ", err)
-	}
+	createTables(sess)
 
 	// Delete all the previous items in the "accounts" table.
 	err = Accounts(sess).Truncate()
@@ -138,9 +147,9 @@ func main() {
 			return err
 		}
 
-		// Simulate transaction retries
-		if time.Since(startTime) < time.Millisecond*50 {
-			// Will fail continuously for 50 milli seconds.
+		// Simulate transaction retries.
+		if time.Since(startTime) < time.Millisecond*500 {
+			// Will fail continuously for 500 milli seconds.
 			if err = crdbForceRetry(tx); err != nil {
 				return err
 			}
