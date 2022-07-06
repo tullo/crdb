@@ -57,7 +57,7 @@ crdb-node3:
 	--background
 
 crdb-node3-quit:
-	@cockroach node drain --certs-dir=certs --host=localhost:26259
+	@cockroach node drain 3 --certs-dir=certs
 	@bash killprocess.sh node3
 
 crdb-node4:
