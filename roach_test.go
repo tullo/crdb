@@ -38,7 +38,7 @@ func TestWithDockerContainer(t *testing.T) {
 			docker.Port("26257/tcp"): {{HostIP: "", HostPort: "26257"}},
 			docker.Port("8080/tcp"):  {{HostIP: "", HostPort: "8080"}},
 		},
-		Cmd: []string{"start-single-node", "--insecure", "--listen-addr=0.0.0.0"},
+		Cmd: []string{"start-single-node", "--insecure", "--listen-addr=0.0.0.0:26257"},
 	}
 	hostConfig := func(hc *docker.HostConfig) {
 		// Auto remove stopped container.
