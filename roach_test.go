@@ -109,16 +109,10 @@ func TestWithDockerContainer(t *testing.T) {
 }
 
 func TestWithTestServer(t *testing.T) {
-	ts, err := testserver.NewTestServer()
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer ts.Stop()
+	db, stop := testserver.NewDBForTest(t)
+	defer stop()
 
-	db, err := sql.Open("postgres", ts.PGURL().String())
-	if err != nil {
-		t.Fatal(err)
-	}
+	var err error
 
 	if _, err = db.Exec(
 		"CREATE TABLE IF NOT EXISTS accounts (id INT PRIMARY KEY, balance INT)"); err != nil {
