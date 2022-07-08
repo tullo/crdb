@@ -33,12 +33,12 @@ func TestWithDockerContainer(t *testing.T) {
 	options := dockertest.RunOptions{
 		Name:       "crdb",
 		Repository: "cockroachdb/cockroach",
-		Tag:        "v21.2.3",
+		Tag:        "v22.1.2",
 		PortBindings: map[docker.Port][]docker.PortBinding{
 			docker.Port("26257/tcp"): {{HostIP: "", HostPort: "26257"}},
 			docker.Port("8080/tcp"):  {{HostIP: "", HostPort: "8080"}},
 		},
-		Cmd: []string{"start-single-node", "--insecure", "--listen-addr=0.0.0.0:26257"},
+		Cmd: []string{"start-single-node", "--insecure", "--advertise-addr=localhost:26257"},
 	}
 	hostConfig := func(hc *docker.HostConfig) {
 		// Auto remove stopped container.
