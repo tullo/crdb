@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/dhui/dktest"
+	"github.com/docker/docker/api/types/mount"
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/cockroachdb"
 	"github.com/golang-migrate/migrate/v4/dktesting"
@@ -18,9 +19,22 @@ const defaultPort = 26257
 
 var (
 	opts = dktest.Options{
-		Cmd:          []string{"start-single-node", "--insecure", "--listen-addr=0.0.0.0"},
+		Cmd: []string{
+			"start-single-node",
+			"--insecure",
+			"--advertise-addr=0.0.0.0:26257",
+		},
 		PortRequired: true,
+		LogStdout:    true,
 		ReadyFunc:    isReady,
+		Volumes:      []string{"crdb_data"},
+		Mounts: []mount.Mount{
+			mount.Mount{
+				Source: "crdb_data",
+				Target: "/cockroach/cockroach-data",
+				Type:   "volume",
+			},
+		},
 	}
 	// Released versions: https://www.cockroachlabs.com/docs/releases/
 	specs = []dktesting.ContainerSpec{
@@ -40,13 +54,13 @@ func isReady(ctx context.Context, c dktest.ContainerInfo) bool {
 		log.Println("open error:", err)
 		return false
 	}
+	defer db.Close()
+
 	if err := db.PingContext(ctx); err != nil {
 		log.Println("ping error:", err)
 		return false
 	}
-	if err := db.Close(); err != nil {
-		log.Println("close error:", err)
-	}
+
 	return true
 }
 

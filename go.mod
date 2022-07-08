@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/cockroachdb/cockroach-go/v2 v2.2.14
 	github.com/dhui/dktest v0.3.10
+	github.com/docker/docker v20.10.17+incompatible
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/google/uuid v1.3.0
 	github.com/jackc/pgx/v4 v4.16.1
@@ -23,7 +24,6 @@ require (
 	github.com/containerd/continuity v0.3.0 // indirect
 	github.com/docker/cli v20.10.17+incompatible // indirect
 	github.com/docker/distribution v2.8.1+incompatible // indirect
-	github.com/docker/docker v20.10.17+incompatible // indirect
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
