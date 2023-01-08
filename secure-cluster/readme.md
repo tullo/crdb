@@ -76,8 +76,8 @@ You can use any node as a SQL gateway.
 ```sh
 # make sql-client-node1
 root@localhost:26257/defaultdb> CREATE DATABASE bank;
-root@localhost:26257/defaultdb> CREATE TABLE bank.accounts (id INT PRIMARY KEY, balance DECIMAL);
-root@localhost:26257/defaultdb> INSERT INTO bank.accounts VALUES (1, 1000.50);
+root@localhost:26257/defaultdb> CREATE TABLE bank.accounts (id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY, balance DECIMAL);
+root@localhost:26257/defaultdb> INSERT INSERT INTO bank.accounts (balance) VALUES (1000.50);
 root@localhost:26257/defaultdb> SELECT * FROM bank.accounts;
   id | balance
 -----+----------
