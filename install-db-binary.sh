@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BINARY=cockroach-v22.1.2.linux-amd64
+BINARY=cockroach-v22.2.2.linux-amd64
 TEMPDIR=/tmp/crdb
 
 echo "Installing $BINARY"
