@@ -11,7 +11,7 @@ require (
 	github.com/jackc/pgx/v4 v4.16.1
 	github.com/lib/pq v1.10.7
 	github.com/ory/dockertest/v3 v3.9.1
-	github.com/upper/db/v4 v4.5.0
+	github.com/upper/db/v4 v4.6.0
 	gorm.io/driver/postgres v1.3.5
 	gorm.io/gorm v1.23.5
 )
@@ -48,6 +48,7 @@ require (
 	github.com/opencontainers/image-spec v1.0.2 // indirect
 	github.com/opencontainers/runc v1.1.4 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/segmentio/fasthash v1.0.3 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
