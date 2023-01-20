@@ -31,6 +31,8 @@ github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc h1:9lRDQMhESg+zvGYm
 github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc/go.mod h1:bciPuU6GHm1iF1pBvUfxfsH0Wmnc2VbpgvbI9ZWuIRs=
 github.com/uptrace/bun v1.1.9 h1:6zs+YJcgw8oj67c+YmI8edQokDFeyR4BE/ykNWjGYYs=
 github.com/uptrace/bun v1.1.9/go.mod h1:fpYRCGyruLCyP7dNjMfqulYn4VBP/fH0enc0j0yW/Cs=
+github.com/uptrace/bun v1.1.10 h1:wx80lg32mWlOV1gNvmPTbR9znt6A2fYvvURzU5dzSPE=
+github.com/uptrace/bun v1.1.10/go.mod h1:pOWJSVU+W0jp3+cbn/TtHdcG/h+QxagECw4EYdKiaSw=
 github.com/uptrace/bun/dialect/pgdialect v1.1.9 h1:V23SU89WfjqtePLFPRXVXCwmSyYb0XKeg8Z6BMXgyHg=
 github.com/uptrace/bun/dialect/pgdialect v1.1.9/go.mod h1:+ux7PjC4NYsNMdGE9b2ERxCi2jJai8Z8zniXFExq0Ns=
 github.com/uptrace/bun/driver/pgdriver v1.1.9 h1:Dy9g/EpgOG15RP3mDAuJd/hnfXAUdBsfxpg9On27M+Y=
