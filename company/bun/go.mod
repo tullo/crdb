@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/uptrace/bun v1.1.10
-	github.com/uptrace/bun/dialect/pgdialect v1.1.9
+	github.com/uptrace/bun/dialect/pgdialect v1.1.10
 	github.com/uptrace/bun/extra/bundebug v1.1.10
 	github.com/uptrace/bun/driver/pgdriver v1.1.10
 )
