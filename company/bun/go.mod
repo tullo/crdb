@@ -6,12 +6,12 @@ require (
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/uptrace/bun v1.1.11
 	github.com/uptrace/bun/dialect/pgdialect v1.1.10
-	github.com/uptrace/bun/extra/bundebug v1.1.10
 	github.com/uptrace/bun/driver/pgdriver v1.1.10
+	github.com/uptrace/bun/extra/bundebug v1.1.11
 )
 
 require (
-	github.com/fatih/color v1.13.0 // indirect
+	github.com/fatih/color v1.14.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
