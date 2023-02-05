@@ -1,14 +1,13 @@
 module github.com/tullo/crdb
 
-go 1.17
+go 1.19
 
 require (
 	github.com/cockroachdb/cockroach-go/v2 v2.2.20
 	github.com/dhui/dktest v0.3.13
-	github.com/docker/docker v20.10.23+incompatible
+	github.com/docker/docker v23.0.0+incompatible
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/google/uuid v1.3.0
-	github.com/jackc/pgx/v4 v4.17.2
 	github.com/jackc/pgx/v5 v5.2.0
 	github.com/lib/pq v1.10.7
 	github.com/ory/dockertest/v3 v3.9.1
@@ -18,12 +17,12 @@ require (
 )
 
 require (
-	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
+	github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161 // indirect
 	github.com/Microsoft/go-winio v0.6.0 // indirect
 	github.com/Nvveen/Gotty v0.0.0-20120604004816-cd527374f1e5 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.0 // indirect
 	github.com/containerd/continuity v0.3.0 // indirect
-	github.com/docker/cli v20.10.22+incompatible // indirect
+	github.com/docker/cli v23.0.0+incompatible // indirect
 	github.com/docker/distribution v2.8.1+incompatible // indirect
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect

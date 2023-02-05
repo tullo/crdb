@@ -1,11 +1,11 @@
 # PostgreSQL driver and toolkit for Go
 
 - https://github.com/jackc/pgx
-- https://pkg.go.dev/github.com/jackc/pgx/v4
+- https://pkg.go.dev/github.com/jackc/pgx/v5
 
 ## Driver
 
-`go get github.com/jackc/pgx/v4@latest`
+`go get github.com/jackc/pgx/v5@latest`
 
 ## Bank Example
 
