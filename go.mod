@@ -8,7 +8,7 @@ require (
 	github.com/docker/docker v23.0.0+incompatible
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/google/uuid v1.3.0
-	github.com/jackc/pgx/v4 v4.16.1
+	github.com/jackc/pgx/v5 v5.2.0
 	github.com/lib/pq v1.10.7
 	github.com/ory/dockertest/v3 v3.9.1
 	github.com/upper/db/v4 v4.6.0
