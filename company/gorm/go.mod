@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/julienschmidt/httprouter v1.3.0
-	gorm.io/driver/postgres v1.4.6
+	gorm.io/driver/postgres v1.4.7
 	gorm.io/gorm v1.24.5
 )
 
