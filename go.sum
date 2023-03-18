@@ -369,6 +369,8 @@ github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8
 github.com/dhui/dktest v0.3.10/go.mod h1:h5Enh0nG3Qbo9WjNFRrwmKUaePEBhXMOygbz3Ww7Sz0=
 github.com/dhui/dktest v0.3.13 h1:hZIrdcWx3LWFGKCfwQVzbtkbRW+qZEhGo4Pxawn7PLE=
 github.com/dhui/dktest v0.3.13/go.mod h1:8TcZz+ri+jwO+YkEH0w4Ho1w3/cpyD+wDgDHk7Cesxw=
+github.com/dhui/dktest v0.3.14 h1:qaIdC9Y2u6ZJbNQ0O0lATsqNiyfetErZmc9flv2ZyhI=
+github.com/dhui/dktest v0.3.14/go.mod h1:d3x35FAVUHGPrE/lT3CCOvIEHJj1GH1fAXY/fMDtn+s=
 github.com/dnaeon/go-vcr v1.0.1/go.mod h1:aBB1+wY4s93YsC3HHjMBMrwTj2R9FHDzUr9KyGc8n1E=
 github.com/docker/cli v0.0.0-20191017083524-a8ff7f821017/go.mod h1:JLrzqnKDaYBop7H2jaqPtU4hHvMKP+vjCwu2uszcLI8=
 github.com/docker/cli v23.0.0+incompatible h1:bcM4syaQ+EM/iczJTimMOGzvnzJBFPFEf4acS7sZ+RM=
