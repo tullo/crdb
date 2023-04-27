@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/cockroachdb/cockroach-go/v2 v2.3.3
 	github.com/dhui/dktest v0.3.15
-	github.com/docker/docker v23.0.4+incompatible
+	github.com/docker/docker v23.0.5+incompatible
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/google/uuid v1.3.0
 	github.com/jackc/pgx/v4 v4.18.1
