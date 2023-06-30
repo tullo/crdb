@@ -6,6 +6,7 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchPackageNames": ["postgres"],
       "automerge": true
     }
   ],
