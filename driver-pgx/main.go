@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/cockroachdb/cockroach-go/v2/crdb/crdbpgx"
-	"github.com/jackc/pgx/v4"
+	crdbpgx "github.com/cockroachdb/cockroach-go/v2/crdb/crdbpgxv5"
+	"github.com/jackc/pgx/v5"
 )
 
 func transferFunds(ctx context.Context, tx pgx.Tx, from int, to int, amount int) error {
