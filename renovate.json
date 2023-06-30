@@ -6,7 +6,7 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "matchPackageNames": ["gorm.io/gorm"],
+      "matchPackageNames": ["gorm.io/gorm", "github.com/jackc/pgx/v5"],
       "automerge": true
     }
   ],
