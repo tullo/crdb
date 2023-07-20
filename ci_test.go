@@ -12,7 +12,7 @@ import (
 func TestWithGithubService(t *testing.T) {
 	var (
 		db  *sql.DB
-		dsn = fmt.Sprintf("postgresql://postgres_user:postgres_password@0.0.0.0:%d/postgres_db?sslmode=disable", 5432)
+		dsn = fmt.Sprintf("postgresql://postgres_user:postgres_password@%s:%d/postgres_db?sslmode=disable", "postgres", 5432)
 	)
 	// setup database connection
 	db, err := sql.Open("postgres", dsn)

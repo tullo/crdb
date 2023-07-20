@@ -13,6 +13,8 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    container: golang:1.20.6-alpine
+
     services: # service containers to run with `test-job`
       postgres: # label used to access the service container
         image: postgres:latest
@@ -21,8 +23,8 @@ jobs:
           POSTGRES_PASSWORD: postgres_password
           POSTGRES_PORT: 5432
           POSTGRES_USER: postgres_user
-        ports: # maps tcp port 5432 on service container to the host
-          - 5432:5432
+#        ports: # maps tcp port 5432 on service container to the host
+#          - 5432:5432
         # set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -33,10 +35,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.20'
+#    - name: Set up Go
+#      uses: actions/setup-go@v4
+#      with:
+#        go-version: '1.20'
 
     - name: Test
       run: go test -v ci_test.go
