@@ -11,8 +11,25 @@ on:
 
 jobs:
 
-  build:
+  test:
     runs-on: ubuntu-latest
+    services: # service containers to run with `test-job`
+      postgres: # label used to access the service container
+        image: postgres:latest
+        env: # service environment variables
+          POSTGRES_DB: postgres_db
+          POSTGRES_PASSWORD: postgres_password
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: postgres_user
+        ports: # maps tcp port 5432 on service container to the host
+          - 5432:5432
+        # set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5  
+        
     steps:
     - uses: actions/checkout@v3
 
