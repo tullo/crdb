@@ -7,7 +7,7 @@ require (
 	github.com/dhui/dktest v0.3.16
 	github.com/docker/docker v24.0.5+incompatible
 	github.com/golang-migrate/migrate/v4 v4.16.2
-	github.com/google/uuid v1.3.0
+	github.com/google/uuid v1.3.1
 	github.com/jackc/pgx/v5 v5.4.3
 	github.com/lib/pq v1.10.9
 	github.com/ory/dockertest/v3 v3.10.0
