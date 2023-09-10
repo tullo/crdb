@@ -7,7 +7,7 @@ require (
 	github.com/uptrace/bun v1.1.15
 	github.com/uptrace/bun/dialect/pgdialect v1.1.15
 	github.com/uptrace/bun/driver/pgdriver v1.1.15
-	github.com/uptrace/bun/extra/bundebug v1.1.14
+	github.com/uptrace/bun/extra/bundebug v1.1.15
 )
 
 require (
