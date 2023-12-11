@@ -3,7 +3,7 @@ networks:
 
 services:
   roach1:
-    image: cockroachdb/cockroach:v23.1.12
+    image: cockroachdb/cockroach:v23.1.13
     command: start --insecure --advertise-addr=roach1:26257 --join=roach1,roach2,roach3 --cluster-name=tulloroach
     healthcheck:
       interval: 10s
@@ -21,7 +21,7 @@ services:
       - roach1_data:/cockroach/cockroach-data
 
   roach2:
-    image: cockroachdb/cockroach:v23.1.12
+    image: cockroachdb/cockroach:v23.1.13
     command: start --insecure --advertise-addr=roach2:26257 --join=roach1,roach2,roach3 --cluster-name=tulloroach
     networks:
       roachnet:
@@ -29,7 +29,7 @@ services:
       - roach2_data:/cockroach/cockroach-data
 
   roach3:
-    image: cockroachdb/cockroach:v23.1.12
+    image: cockroachdb/cockroach:v23.1.13
     command: start --insecure --advertise-addr=roach3:26257 --join=roach1,roach2,roach3 --cluster-name=tulloroach
     networks:
       roachnet:
@@ -37,7 +37,7 @@ services:
       - roach3_data:/cockroach/cockroach-data
 
   init-cluster:
-    image: cockroachdb/cockroach:v23.1.12
+    image: cockroachdb/cockroach:v23.1.13
     command: init --insecure --host=roach1:26257 --cluster-name=tulloroach
     depends_on:
       roach1:
