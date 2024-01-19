@@ -3,7 +3,7 @@ module github.com/tullo/crdb
 go 1.20
 
 require (
-	github.com/cockroachdb/cockroach-go/v2 v2.3.5
+	github.com/cockroachdb/cockroach-go/v2 v2.3.6
 	github.com/dhui/dktest v0.4.0
 	github.com/docker/docker v24.0.7+incompatible
 	github.com/golang-migrate/migrate/v4 v4.17.0
@@ -64,4 +64,5 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.10.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
