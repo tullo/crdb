@@ -10,11 +10,9 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
-    container: golang:1.22.0-alpine
-
+    #container: golang:1.22.0-alpine
     services: # service containers to run with test job
       postgres: # label used to access the service container
         image: postgres:latest
@@ -31,7 +29,10 @@ jobs:
           --health-retries 5  
         
     steps:
-    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-
-    - name: Test
-      run: go test -v ci_test.go
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 'stable'
+      - name: Go Test
+        run: go test -v ci_test.go
