@@ -33,8 +33,9 @@ github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKs
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc h1:9lRDQMhESg+zvGYmW5DyG0UqvY96Bu5QYsTLvCHdrgo=
 github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc/go.mod h1:bciPuU6GHm1iF1pBvUfxfsH0Wmnc2VbpgvbI9ZWuIRs=
-github.com/uptrace/bun v1.2.0 h1:/TLRa60gXfwHs5yupQFFol+yDeNQl3UKdY8FUax9qRE=
 github.com/uptrace/bun v1.2.0/go.mod h1:cNg+pWBUMmJ8rHnETgf65CEvn3aIKErrwOD6IA8e+Ec=
+github.com/uptrace/bun v1.2.1 h1:2ENAcfeCfaY5+2e7z5pXrzFKy3vS8VXvkCag6N2Yzfk=
+github.com/uptrace/bun v1.2.1/go.mod h1:cNg+pWBUMmJ8rHnETgf65CEvn3aIKErrwOD6IA8e+Ec=
 github.com/uptrace/bun/dialect/pgdialect v1.2.0 h1:Fbx7n4QagnqENIVoLuYFX8/UuAjEFj7lt/Ox3cXDuh4=
 github.com/uptrace/bun/dialect/pgdialect v1.2.0/go.mod h1:kCd5xMLM4UJRb5tiAYnel8SX4A7ch2xIAy4a+xd7Zzc=
 github.com/uptrace/bun/driver/pgdriver v1.2.0 h1:ZezndfiQvCtF5ygouisQrO1KSOJP3vVy+0ZCEECTkm0=
