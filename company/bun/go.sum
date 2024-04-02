@@ -33,15 +33,14 @@ github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKs
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc h1:9lRDQMhESg+zvGYmW5DyG0UqvY96Bu5QYsTLvCHdrgo=
 github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc/go.mod h1:bciPuU6GHm1iF1pBvUfxfsH0Wmnc2VbpgvbI9ZWuIRs=
-github.com/uptrace/bun v1.2.0/go.mod h1:cNg+pWBUMmJ8rHnETgf65CEvn3aIKErrwOD6IA8e+Ec=
 github.com/uptrace/bun v1.2.1 h1:2ENAcfeCfaY5+2e7z5pXrzFKy3vS8VXvkCag6N2Yzfk=
 github.com/uptrace/bun v1.2.1/go.mod h1:cNg+pWBUMmJ8rHnETgf65CEvn3aIKErrwOD6IA8e+Ec=
 github.com/uptrace/bun/dialect/pgdialect v1.2.1 h1:ceP99r03u+s8ylaDE/RzgcajwGiC76Jz3nS2ZgyPQ4M=
 github.com/uptrace/bun/dialect/pgdialect v1.2.1/go.mod h1:mv6B12cisvSc6bwKm9q9wcrr26awkZK8QXM+nso9n2U=
 github.com/uptrace/bun/driver/pgdriver v1.2.1 h1:Cp6c1tKzbTIyL8o0cGT6cOhTsmQZdsUNhgcV51dsmLU=
 github.com/uptrace/bun/driver/pgdriver v1.2.1/go.mod h1:jEd3WGx74hWLat3/IkesOoWNjrFNUDADK3nkyOFOOJM=
-github.com/uptrace/bun/extra/bundebug v1.2.0 h1:F8AbAQi4Rqa15KMVXWx11gqh1FY/GipA1OmRjtaHA8w=
-github.com/uptrace/bun/extra/bundebug v1.2.0/go.mod h1:iHtcnS5aWZm+hOLDbXu6xWm0DIkORFAXQ3bzfcDvKCw=
+github.com/uptrace/bun/extra/bundebug v1.2.1 h1:85MYpX3QESYI02YerKxUi1CD9mHuLrc2BXs1eOCtQus=
+github.com/uptrace/bun/extra/bundebug v1.2.1/go.mod h1:sfGKIi0HSGxsTC/sgIHGwpnYduHHYhdMeOIwurgSY+Y=
 github.com/vmihailenco/msgpack/v5 v5.4.1 h1:cQriyiUvjTwOHg8QZaPihLWeRAAVoCpE00IUPn0Bjt8=
 github.com/vmihailenco/msgpack/v5 v5.4.1/go.mod h1:GaZTsDaehaPpQVyxrf5mtQlH+pc21PIudVV/E3rRQok=
 github.com/vmihailenco/tagparser/v2 v2.0.0 h1:y09buUbR+b5aycVFQs/g70pqKVZNBmxwAhO7/IwNM9g=
