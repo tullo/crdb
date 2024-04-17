@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/cockroachdb/cockroach-go/v2 v2.3.7
-	github.com/dhui/dktest v0.4.0
+	github.com/dhui/dktest v0.4.1
 	github.com/docker/docker v26.0.1+incompatible
 	github.com/golang-migrate/migrate/v4 v4.17.0
 	github.com/google/uuid v1.6.0
