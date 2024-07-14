@@ -1,6 +1,6 @@
 module github.com/tullo/crdb/company/gopg
 
-go 1.19
+go 1.22
 
 require (
 	github.com/go-pg/pg/v10 v10.13.0
