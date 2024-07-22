@@ -5,7 +5,7 @@ go 1.22
 require (
 	github.com/cockroachdb/cockroach-go/v2 v2.3.8
 	github.com/dhui/dktest v0.4.1
-	github.com/docker/docker v27.0.3+incompatible
+	github.com/docker/docker v27.1.0+incompatible
 	github.com/golang-migrate/migrate/v4 v4.17.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.6.0
