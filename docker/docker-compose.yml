@@ -1,6 +1,6 @@
 services:
   crdb:
-    image: cockroachdb/cockroach:v24.2.0
+    image: cockroachdb/cockroach:v24.2.1
     command: start-single-node --insecure --listen-addr=localhost:26257
     healthcheck:
       interval: 10s
