@@ -12,7 +12,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: golang:1.23.1-alpine
+    container: golang:1.23.2-alpine
     services: # service containers to run with test job
       postgres: # label used to access the service container
         image: postgres:latest
