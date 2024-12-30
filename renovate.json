@@ -1,15 +1,29 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": [
+    "config:recommended"
+  ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "matchPackageNames": ["gorm.io/gorm", "github.com/jackc/pgx/v5"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "matchPackageNames": [
+        "gorm.io/gorm",
+        "github.com/jackc/pgx/v5"
+      ],
       "automerge": true
     }
   ],
   "automerge": true,
   "ignoreTests": true,
-  "postUpdateOptions": ["gomodTidy"],
-  "constraints": {"go": "1.23"}
+  "postUpdateOptions": [
+    "gomodTidy"
+  ],
+  "constraints": {
+    "go": "1.23"
+  }
 }
