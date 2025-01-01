@@ -1,11 +1,12 @@
 module github.com/tullo/crdb/company/gobun
 
-go 1.22
+go 1.23
+
 toolchain go1.23.4
 
 require (
 	github.com/julienschmidt/httprouter v1.3.0
-	github.com/uptrace/bun v1.2.6
+	github.com/uptrace/bun v1.2.7
 	github.com/uptrace/bun/dialect/pgdialect v1.2.6
 	github.com/uptrace/bun/driver/pgdriver v1.2.6
 	github.com/uptrace/bun/extra/bundebug v1.2.6
