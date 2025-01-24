@@ -6,7 +6,7 @@ toolchain go1.23.5
 
 require (
 	github.com/cockroachdb/cockroach-go/v2 v2.3.8
-	github.com/dhui/dktest v0.4.3
+	github.com/dhui/dktest v0.4.4
 	github.com/docker/docker v27.5.1+incompatible
 	github.com/golang-migrate/migrate/v4 v4.18.1
 	github.com/google/uuid v1.6.0
