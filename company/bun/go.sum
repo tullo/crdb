@@ -26,8 +26,8 @@ github.com/uptrace/bun/dialect/pgdialect v1.2.9 h1:caf5uFbOGiXvadV6pA5gn87k0awFF
 github.com/uptrace/bun/dialect/pgdialect v1.2.9/go.mod h1:m7L9JtOp/Lt8HccET70ULxplMweE/u0S9lNUSxz2duo=
 github.com/uptrace/bun/driver/pgdriver v1.2.9 h1:wPXQwD78mYeR7o5tQTM/tgBaVd5QWMN/Nq02h+zHlsI=
 github.com/uptrace/bun/driver/pgdriver v1.2.9/go.mod h1:YnlfL8hiQ++jSCPySK3k8BotpwbLL9SRDzssvts1Bm4=
-github.com/uptrace/bun/extra/bundebug v1.2.8 h1:Epv0ycLOnoKWPky+rufP2F/PrcSlKkd4tmVIFOdq90A=
-github.com/uptrace/bun/extra/bundebug v1.2.8/go.mod h1:ucnmuPw/5ePbNFj2SPmV0lQh3ZvL+3HCrpvRxIYZyWQ=
+github.com/uptrace/bun/extra/bundebug v1.2.9 h1:3SU66p+q76XhfeUUzl9XooVu7hVNueZ/2Q3J8S1uzCU=
+github.com/uptrace/bun/extra/bundebug v1.2.9/go.mod h1:/rp83jYAtwZUQIz+L3KwvREXaSd5GQGPJUusqq+Qtis=
 github.com/vmihailenco/msgpack/v5 v5.4.1 h1:cQriyiUvjTwOHg8QZaPihLWeRAAVoCpE00IUPn0Bjt8=
 github.com/vmihailenco/msgpack/v5 v5.4.1/go.mod h1:GaZTsDaehaPpQVyxrf5mtQlH+pc21PIudVV/E3rRQok=
 github.com/vmihailenco/tagparser/v2 v2.0.0 h1:y09buUbR+b5aycVFQs/g70pqKVZNBmxwAhO7/IwNM9g=
