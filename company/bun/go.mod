@@ -2,7 +2,7 @@ module github.com/tullo/crdb/company/gobun
 
 go 1.23
 
-toolchain go1.23.5
+toolchain go1.23.6
 
 require (
 	github.com/julienschmidt/httprouter v1.3.0
