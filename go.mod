@@ -1,11 +1,11 @@
 module github.com/tullo/crdb
 
-go 1.22.0
+go 1.23
 
 toolchain go1.23.6
 
 require (
-	github.com/cockroachdb/cockroach-go/v2 v2.3.8
+	github.com/cockroachdb/cockroach-go/v2 v2.4.0
 	github.com/dhui/dktest v0.4.4
 	github.com/docker/docker v27.5.1+incompatible
 	github.com/golang-migrate/migrate/v4 v4.18.2
@@ -33,7 +33,7 @@ require (
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-viper/mapstructure/v2 v2.0.0 // indirect
-	github.com/gofrs/flock v0.12.0 // indirect
+	github.com/gofrs/flock v0.12.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.20.0 // indirect
