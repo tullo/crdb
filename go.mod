@@ -14,7 +14,7 @@ require (
 	github.com/ory/dockertest/v3 v3.12.0
 	github.com/upper/db/v4 v4.10.0
 	gorm.io/driver/postgres v1.5.11
-	gorm.io/gorm v1.25.12
+	gorm.io/gorm v1.26.0
 )
 
 require (
