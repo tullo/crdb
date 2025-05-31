@@ -6,7 +6,7 @@ toolchain go1.24.3
 require (
 	github.com/julienschmidt/httprouter v1.3.0
 	gorm.io/driver/postgres v1.6.0
-	gorm.io/gorm v1.26.1
+	gorm.io/gorm v1.30.0
 )
 
 require (
