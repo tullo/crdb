@@ -4,7 +4,7 @@ go 1.23
 toolchain go1.24.4
 
 require (
-	github.com/cockroachdb/cockroach-go/v2 v2.4.0
+	github.com/cockroachdb/cockroach-go/v2 v2.4.1
 	github.com/dhui/dktest v0.4.5
 	github.com/docker/docker v28.3.0+incompatible
 	github.com/golang-migrate/migrate/v4 v4.18.3
