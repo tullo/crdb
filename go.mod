@@ -10,7 +10,7 @@ require (
 	github.com/docker/docker v28.4.0+incompatible
 	github.com/golang-migrate/migrate/v4 v4.19.0
 	github.com/google/uuid v1.6.0
-	github.com/jackc/pgx/v5 v5.7.5
+	github.com/jackc/pgx/v5 v5.7.6
 	github.com/lib/pq v1.10.9
 	github.com/ory/dockertest/v3 v3.12.0
 	github.com/upper/db/v4 v4.10.0
