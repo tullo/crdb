@@ -29,6 +29,6 @@ jobs:
           --health-retries 5  
         
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Go Test
         run: go test -v ci_test.go
