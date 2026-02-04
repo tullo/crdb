@@ -2,7 +2,7 @@ module github.com/tullo/crdb/company/gopg
 
 go 1.24.0
 
-toolchain go1.25.6
+toolchain go1.25.7
 
 require (
 	github.com/go-pg/pg/v10 v10.15.0
