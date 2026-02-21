@@ -7,7 +7,7 @@ toolchain go1.26.0
 require (
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/uptrace/bun v1.2.17
-	github.com/uptrace/bun/dialect/pgdialect v1.2.16
+	github.com/uptrace/bun/dialect/pgdialect v1.2.17
 	github.com/uptrace/bun/driver/pgdriver v1.2.17
 	github.com/uptrace/bun/extra/bundebug v1.2.16
 )
