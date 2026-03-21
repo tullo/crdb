@@ -1,6 +1,6 @@
 module github.com/tullo/crdb
 
-go 1.25
+go 1.25.0
 
 toolchain go1.26.1
 
@@ -10,7 +10,7 @@ require (
 	github.com/docker/docker v28.5.2+incompatible
 	github.com/golang-migrate/migrate/v4 v4.19.1
 	github.com/google/uuid v1.6.0
-	github.com/jackc/pgx/v5 v5.8.0
+	github.com/jackc/pgx/v5 v5.9.0
 	github.com/lib/pq v1.12.0
 	github.com/ory/dockertest/v3 v3.12.0
 	github.com/upper/db/v4 v4.10.0
