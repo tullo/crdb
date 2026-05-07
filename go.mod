@@ -2,7 +2,7 @@ module github.com/tullo/crdb
 
 go 1.25.5
 
-toolchain go1.26.2
+toolchain go1.26.3
 
 require (
 	github.com/cockroachdb/cockroach-go/v2 v2.4.3
