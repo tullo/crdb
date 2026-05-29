@@ -5,7 +5,7 @@ go 1.24.0
 toolchain go1.26.3
 
 require (
-	github.com/go-pg/pg/v10 v10.15.0
+	github.com/go-pg/pg/v10 v10.15.1
 	github.com/julienschmidt/httprouter v1.3.0
 )
 
