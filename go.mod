@@ -14,7 +14,7 @@ require (
 	github.com/lib/pq v1.12.3
 	github.com/ory/dockertest/v3 v3.12.0
 	github.com/upper/db/v4 v4.10.0
-	gorm.io/driver/postgres v1.6.0
+	gorm.io/driver/postgres v1.6.2
 	gorm.io/gorm v1.31.2
 )
 
