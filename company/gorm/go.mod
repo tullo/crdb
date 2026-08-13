@@ -2,7 +2,7 @@ module github.com/tullo/crdb/company/gorm
 
 go 1.25.0
 
-toolchain go1.26.5
+toolchain go1.26.6
 
 require (
 	github.com/julienschmidt/httprouter v1.3.0
