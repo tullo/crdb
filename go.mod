@@ -8,7 +8,7 @@ require (
 	github.com/cockroachdb/cockroach-go/v2 v2.4.3
 	github.com/dhui/dktest v0.4.6
 	github.com/docker/docker v28.5.2+incompatible
-	github.com/golang-migrate/migrate/v4 v4.20.0
+	github.com/golang-migrate/migrate/v4 v4.20.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.11.0
 	github.com/lib/pq v1.12.3
